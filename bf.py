@@ -3,10 +3,10 @@ import sys
 try:
     f = open(sys.argv[1], "r")
 except IndexError:
-    print "python "+sys.argv[0]+" <file> <input>"
+    print("python "+sys.argv[0]+" <file> <input>")
     sys.exit()
 except IOError:
-    print "cannot open file: " + sys.argv[0]
+    print("cannot open file: " + sys.argv[0])
     sys.exit()
 
 try:
@@ -14,7 +14,7 @@ try:
 except IndexError:
     user_input = []
 
-commands = "+-,.[]<>@"
+commands = "+-,.[]<>"
 code = [x for x in f.read() if x in commands]
 space = [0 for x in range(30000)]
 pointer = 0
@@ -56,13 +56,7 @@ while i < len(code):
         pointer += 1
     elif code[i] == '<':
         pointer -= 1
-
-    elif code[i] == '@':
-        print "pointer: " + str(pointer)
-        print space[:10]
-        print " " + "   "*pointer + "^"
-    # print i, "'"+code[i]+"'", pointer, space[:10]
     i += 1
 
 if string_builder != "":
-    print string_builder
+    print(string_builder)
